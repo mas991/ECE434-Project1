@@ -60,5 +60,9 @@ int main(int argc, char *argv[]) {
         for(int i=0;i<H;i++) {
                 fprintf(filePtrOut,"Hi I am process %d and I found the hidden key in position A[%d].\n",getpid(),keyLoc[i]);
         }
+        
+        free(numList);
+        free(keyLoc);
+        
         return 0;
 }
