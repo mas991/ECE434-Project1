@@ -76,7 +76,7 @@ int main(int argc, char *argv[]) {
 
         printf("Time Elapsed: %f.\n",runTime);
         
-        fclose("P1Input.txt);
+        fclose("P1Input.txt");
         fclose("P1Part1.txt");
 
         return 0;
