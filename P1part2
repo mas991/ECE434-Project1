@@ -3,6 +3,7 @@
 #include <ctype.h>
 #include <string.h>
 #include <time.h>
+#include <sys/time.h>
 #include <unistd.h>
 #include <sys/wait.h>
 
@@ -19,11 +20,11 @@ FILE * filePtrOut;
 //FUNCTION DECLARATIONS
 int childProcessCode(int index);
 int *fileArray;//Will be the addresses to integers
+struct timeval start, end;
 //------------------------------------------
 
 int main(int argc, char *argv[]){
 	
-	struct timeval start, end;
 	gettimeofday(&start,NULL);
 	
 	pid_t pid;
@@ -33,7 +34,7 @@ int main(int argc, char *argv[]){
             exit(1);
     }
 
-    filePtrOut = fopen("P1Part1.txt","w");
+    filePtrOut = fopen("P1Part2.txt","w");
     if(filePtrOut == NULL) {
             printf("Error: File open failed.\n");
             exit(1);
@@ -94,12 +95,12 @@ int main(int argc, char *argv[]){
 		write(fd[1],&offset,sizeof(int));
 		offset = offset + rec;
 	}
-	
+
 	int numKeysFound = 0;
 	int * keyInfo = (int*) malloc(2*H*sizeof(int));
 	while(numKeysFound < H) {
-	    read(cd[0],&keyInfo[numKeysFound],sizeof(int));
-	    read(cd[0],&keyInfo[numKeysFound+1],sizeof(int));
+	    read(cd[0],&keyInfo[2*numKeysFound],sizeof(int));
+	    read(cd[0],&keyInfo[2*numKeysFound+1],sizeof(int));
 	    numKeysFound++;
 	}
 	
@@ -108,7 +109,7 @@ int main(int argc, char *argv[]){
 	float finalavg = 0;
 	
 	for(int r = 0; r < PN-1; r++){
-		read(final[0], &newpackage, 3*sizeof(float));
+		read(final[0], newpackage, 3*sizeof(float));
 		if((int) newpackage[0] > finalmaxnum) {
 		    finalmaxnum = (int) newpackage[0];
 		}
@@ -119,6 +120,12 @@ int main(int argc, char *argv[]){
 	for(int i=0;i<H;i++) {
 	    fprintf(filePtrOut,"Hi I am process %d and I found the hidden key in position A[%d].\n",keyInfo[2*i],keyInfo[2*i+1]);
 	}
+	
+	gettimeofday(&end,NULL);
+	float runTime = (end.tv_usec - start.tv_usec)/1000000.0;
+
+    printf("Time Elapsed: %f.\n",runTime);
+	
 	return 0;
 }
 
@@ -165,5 +172,5 @@ int childProcessCode(int index){
 	newpackage[0] = (float) maxNum;
 	newpackage[1] = weightAvg;
 	newpackage[2] = (float) linestoRead;
-	write(final[1], newpackage, 4 * sizeof(float));
+	write(final[1], newpackage, 3 * sizeof(float));
 }
