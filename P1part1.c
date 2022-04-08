@@ -75,6 +75,9 @@ int main(int argc, char *argv[]) {
         float runTime = (end.tv_usec - start.tv_usec)/1000000.0;
 
         printf("Time Elapsed: %f.\n",runTime);
+        
+        fclose("P1Input.txt);
+        fclose("P1Part1.txt");
 
         return 0;
 }
