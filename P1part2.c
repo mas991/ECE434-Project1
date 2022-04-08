@@ -40,7 +40,6 @@ int main(int argc, char *argv[]){
             exit(1);
     }
 
-    fprintf(filePtrOut,"Hi I'm process %d and my parent is %d.\n",getpid(),getppid());
     L = atoi(argv[1]);
     H = atoi(argv[2]);
 
@@ -63,21 +62,21 @@ int main(int argc, char *argv[]){
 	
 	int offset = 0;
 	int rec = L/(PN-1);
-	
 	int totalProc = 1;
 	int procNum = 0;
 	int isChild = 0;
 	pipe(fd);
 	pipe(cd);
 	pipe(final);
+	int parentPID;
 	while(totalProc < PN){
 	    totalProc++;
 		pid = fork();
+		parentPID = getppid();
 		if(pid < 0){
 			fprintf(filePtrOut,"Something went wrong and child process could not be created.\n");
 			exit(1);
 		}else if(pid == 0){
-			fprintf(filePtrOut,"Hi I'm process %d and my parent is %d.\n",getpid(),getppid());
 			isChild = 1;
 			procNum = totalProc;
 		}else{
@@ -85,7 +84,10 @@ int main(int argc, char *argv[]){
 		}
 	}
 	
+	fprintf(filePtrOut,"Hi I'm process %d and my parent is %d.\n",getpid(),parentPID);
+	
 	if(isChild) {
+	    wait(NULL);
 	    childProcessCode(procNum);
 	    exit(0);
 	}
