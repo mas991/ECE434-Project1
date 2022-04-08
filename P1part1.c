@@ -64,7 +64,7 @@ int main(int argc, char *argv[]) {
         }
 
         fprintf(filePtrOut,"Max = %d, Avg = %f.\n\n",maxNum,avg);
-        for(int i=0;i<H;i++) {
+        for(int i=0;i<currKey;i++) {
                 fprintf(filePtrOut,"Hi I am process %d and I found the hidden key in position A[%d].\n",getpid(),keyLoc[i]);
         }
 
