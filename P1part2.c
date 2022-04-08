@@ -9,7 +9,7 @@
 
 int H;
 int L;
-int PN = 4;//THIS SHOULD BE INCREASED FOR BETTER ALGORITHM PERFORMANCE
+int PN;//THIS SHOULD BE INCREASED FOR BETTER ALGORITHM PERFORMANCE
 int fd[2];
 int cd[2];
 int final[2];
@@ -42,6 +42,7 @@ int main(int argc, char *argv[]){
 
     L = atoi(argv[1]);
     H = atoi(argv[2]);
+    PN = atoi(argv[3]);
 
     if(L < 3000) {
             fprintf(filePtrOut,"Error: Argument L should be greater than or equal to 3000.\n");
