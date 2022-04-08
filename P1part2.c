@@ -118,7 +118,6 @@ int main(int argc, char *argv[]){
 		}
 		finalavg += newpackage[1]/newpackage[2];
 	}
-	
 	fprintf(filePtrOut,"Max = %d, Avg = %f.\n\n",finalmaxnum,finalavg);
 	for(int i=0;i<H;i++) {
 	    fprintf(filePtrOut,"Hi I am process %d and I found the hidden key in position A[%d].\n",keyInfo[2*i],keyInfo[2*i+1]);
@@ -135,19 +134,13 @@ int main(int argc, char *argv[]){
 
 //Returns the number of hidden keys found
 int childProcessCode(int index){
-    int isLast = 0;
-    if(index == PN) {
-        isLast = 1;
-    }
 	int offset;
 	int n = read(fd[0], &offset, sizeof(int));
 	int linestoRead;
 	int procID = getpid();
-	if(isLast) {
-	    linestoRead = L-offset;
-	}
-	else {
-	    linestoRead = L/(PN-1);
+	linestoRead = L/(PN-1);
+	if(offset == L/(PN-1)*(PN-2)) {
+	    linestoRead = L - offset;
 	}
 	
 	//Now we can get the total and max from array
