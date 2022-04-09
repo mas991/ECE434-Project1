@@ -1,0 +1,17 @@
+Hi I'm process 3047 and my parent is 3044.
+Hi I'm process 3050 and my parent is 3046.
+Hi I'm process 3048 and my parent is 3046.
+Hi I'm process 3046 and my parent is 3044.
+Hi I'm process 3043 and my parent is 3039.
+Hi I'm process 3044 and my parent is 3039.
+Hi I'm process 3039 and my parent is 3038.
+Max = 99996, Avg = 297940.875000.
+
+Hi I am process 3047 and I found the hidden key in position A[2].
+Hi I am process 3047 and I found the hidden key in position A[46].
+Hi I am process 3048 and I found the hidden key in position A[1122].
+Hi I am process 3050 and I found the hidden key in position A[2012].
+Hi I am process 3050 and I found the hidden key in position A[2260].
+Hi I am process 3046 and I found the hidden key in position A[2882].
+Hi I am process 3046 and I found the hidden key in position A[2991].
+Hi I am process 3046 and I found the hidden key in position A[2994].
