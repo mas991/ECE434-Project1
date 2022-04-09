@@ -1,0 +1,14 @@
+Hi I'm process 5891 and my parent is 5890.
+Hi I'm process 5890 and my parent is 5889.
+Hi I'm process 5889 and my parent is 5885.
+Hi I'm process 5885 and my parent is 5884.
+Max = 99996, Avg = 148970.375000.
+
+Hi I am process 5891 and I found the hidden key in position A[2].
+Hi I am process 5891 and I found the hidden key in position A[46].
+Hi I am process 5891 and I found the hidden key in position A[1122].
+Hi I am process 5890 and I found the hidden key in position A[2012].
+Hi I am process 5890 and I found the hidden key in position A[2260].
+Hi I am process 5890 and I found the hidden key in position A[2882].
+Hi I am process 5890 and I found the hidden key in position A[2991].
+Hi I am process 5890 and I found the hidden key in position A[2994].
